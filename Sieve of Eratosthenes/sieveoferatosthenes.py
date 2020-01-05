@@ -14,3 +14,4 @@ def SieveOfEratosthenes(n):
 if __name__ == '__main__':
     num  = int(input('Enter a number: '))
     SieveOfEratosthenes(num)
+    

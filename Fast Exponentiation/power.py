@@ -16,3 +16,4 @@ if __name__ == '__main__':
     a = int(input('Enter a base: '))
     b = int(input('Enter a power: '))
     print(f'{power(a,b)}')
+    

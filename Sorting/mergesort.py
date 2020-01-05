@@ -24,3 +24,4 @@ if __name__ == '__main__':
     print('Enter a list of numbrt saperated by space.')
     arr = list(map(int,input().split()))
     print(mergesort(arr))
+    
