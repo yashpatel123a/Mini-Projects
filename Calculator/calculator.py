@@ -1,23 +1,32 @@
-def calc(num1,num2,operation):
-    if operation not in '+-/*':
-        return 'Please only type one of these characters: "+, -, *, /"!'
-    if operation == '+':
-        return(str(num1) + ' ' + operation + ' ' + str(num2) + ' = ' + str(num1 + num2))
-    if operation == '-':
-        return(str(num1) + ' ' + operation + ' ' + str(num2) + ' = ' + str(num1 - num2))
-    if operation == '*':
-        return(str(num1) + ' ' + operation + ' ' + str(num2) + ' = ' + str(num1 * num2))
-    if operation == '/':
-        if num2 == 0:
-            return 'not divisable'
-        else:
-            return(str(num1) + ' ' + operation + ' ' + str(num2) + ' = ' + str(num1 / num2))
+import re
+print('Welcome to Calculator')
+print("e - Exit\nr - reset")
+previous = None
+run = True
 
-if __name__ == '__main__':
-    a = int(input('Enter the first number: '))
-    b = int(input('Enter the second number: '))
-    operation = input(
-        'What kind of operation would you like to do?\
-        \nChoose between "+, -, *, /" : ')
-    print(calc(a, b, operation))
-    
+def performMath():
+    global run,previous
+    equation = ''
+    if previous == None:
+        equation = input('Enter euqation:')
+    else:
+        equation = input(str(previous))
+    if equation == 'r':
+        previous = None
+        pass
+    elif equation == 'e':
+        print('Good Bye.')
+        run = False
+    else:
+        equation = re.sub('[^0-9+-/*%()]','',equation)
+        try:
+            if previous == None:
+                previous = eval(equation)
+            else:
+                previous = eval(str(previous) + equation)
+        except:
+            print('Its not a valid equation.')
+            previous = None
+
+while run:
+    performMath()
